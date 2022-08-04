@@ -13,6 +13,7 @@ public class RotateBothDirections : MonoBehaviour
     public float closedRotation;
     public float finalRot = 90f;
     public bool inMotion = false;
+
     // Start is called before the first frame update
     void Start()
     {

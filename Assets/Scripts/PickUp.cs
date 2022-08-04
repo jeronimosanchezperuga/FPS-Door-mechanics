@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public bool keyAdquired = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +20,28 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Puerta"))
         {
+            Debug.Log(other.gameObject);
             //comunicarse con el script de la puerta y activar apertura de puerta
-            other.GetComponent<RotateBothDirections>().UseDoor();
+            //solo si tengo la llave (keyscript no es null)
+            if (keyAdquired)
+            {
+                Debug.Log(other.gameObject);
+                other.GetComponent<RotateBothDirections>().UseDoor();
+            }
+            
+        }
+
+        if (other.gameObject.CompareTag("Key"))
+        {
+            
+            //almaceno el script que tiene la llave para registrar que la tengo
+            keyAdquired = true;
+            Destroy(other.gameObject);
+            //TODO
+            //actualizar UI para mostrar el item
         }
     }
 
