@@ -37,7 +37,7 @@ public class PickUp : MonoBehaviour
         if (other.gameObject.CompareTag("Key"))
         {
             
-            //almaceno el script que tiene la llave para registrar que la tengo
+            //cambio el bool para indicar que tengo la llave
             keyAdquired = true;
             Destroy(other.gameObject);
             //TODO
